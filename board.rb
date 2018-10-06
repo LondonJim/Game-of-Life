@@ -24,6 +24,8 @@ class Board
     @game_board
   end
 
+  private
+
   def random_binary
     Kernel.rand(2)
   end
