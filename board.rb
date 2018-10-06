@@ -13,7 +13,7 @@ class Board
 
     while column <= @x_length do
       while row <= @y_length do
-        game_row.push(0)
+        game_row.push(random_binary)
         row += 1
       end
       @game_board.push(game_row)
@@ -22,6 +22,10 @@ class Board
       game_row = []
     end
     @game_board
+  end
+
+  def random_binary
+    Kernel.rand(2)
   end
 
 end
