@@ -25,7 +25,11 @@ class Board
   private
 
   def random_binary
-    Kernel.rand(2)
+    if Kernel.rand(2) == 0
+      return " "
+    else
+      return "█"
+    end
   end
 
 end

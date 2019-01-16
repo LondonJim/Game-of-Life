@@ -6,6 +6,7 @@ class CellChecker
     @x_position = 0
     @y_position = 0
     @neighbours = 0
+
     @width = @new_frame.count - 1
     @height = @new_frame[0].count - 1
 
@@ -41,17 +42,25 @@ class CellChecker
               y_check = (@y_position + rel_num_two)
             end
 
-            unless @x_position == (x_check) && @y_position == (y_check)
-              @neighbours += 1 if grid[x_check][y_check] == 1
+            unless (@x_position == (x_check)) && (@y_position == (y_check))
+              @neighbours += 1 if grid[x_check][y_check] == "█"
             end
+
             rel_num_two += 1
           end
           rel_num_one += 1
         end
-        @new_frame[@x_position][@y_position] = 0 if @neighbours < 2
-        @new_frame[@x_position][@y_position] = 0 if @neighbours > 3
-        @new_frame[@x_position][@y_position] = 1 if @neighbours == 3
-        (@new_frame[@x_position][@y_position] = grid[@x_position][@y_position]) if @neighbours == 2
+
+        if @neighbours < 2 || @neighbours > 3
+          @new_frame[@x_position][@y_position] = " "
+        else
+          @new_frame[@x_position][@y_position] = "█"
+        end
+
+        grid_position = grid[@x_position][@y_position]
+
+        (@new_frame[@x_position][@y_position] = grid_position) if @neighbours == 2
+
         @neighbours = 0
         @y_position += 1
       end
