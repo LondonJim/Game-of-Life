@@ -16,11 +16,15 @@ Meets all the following requirements:
 
 - The board should wrap
 
-*Currently still refactoring the cell checker code*
+*Currently still in the process of refactoring the cell checker code!*
 
 ### Installation
 
 Written in Ruby 2.5.1
+
+Installation of gems in game root directory:
+
+`bundle`
 
 
 ### How to run
