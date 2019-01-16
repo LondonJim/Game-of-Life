@@ -36,6 +36,8 @@ In the game root of the directory enter:
 
 If you wish to change the board size change the integer arguments concerning the play method within this file
 
+*To end the game push < space >*
+
 
 ### Testing
 
