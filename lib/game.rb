@@ -1,5 +1,5 @@
 require_relative "board"
-require_relative "cell_checker"
+require_relative "cell_checker_new"
 require_relative "display"
 
 

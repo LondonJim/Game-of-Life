@@ -18,7 +18,6 @@ class Display
       window.addstr(line)
       window.refresh
     end
-
   end
 
 end

@@ -11,6 +11,7 @@ class CellChecker
     @height = @new_frame[0].count - 1
 
     while @x_position <= @width do
+
       @y_position = 0
       x_check = @x_position
 
