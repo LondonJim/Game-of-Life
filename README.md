@@ -16,7 +16,7 @@ Meets all the following requirements:
 
 - The board should wrap
 
-*Currently still in the process of refactoring the cell checker code!*
+*I revisted this code from a while ago and I'm currently still in the process of refactoring the cell checker code! But it works!*
 
 ### Installation
 
