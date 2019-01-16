@@ -16,13 +16,13 @@ Meets all the following requirements:
 
 - The board should wrap
 
-*I revisted this code from a while ago and I'm currently still in the process of refactoring the cell checker code! But it works!*
+*I revisted this code from a while ago, I'm currently still in the process of refactoring the cell checker code! But it works!*
 
 ### Installation
 
 Written in Ruby 2.5.1
 
-Installation of gems in game root directory:
+Installation of gems in the game root directory:
 
 `bundle`
 
@@ -30,7 +30,7 @@ Installation of gems in game root directory:
 ### How to run
 Currently the this Game of Life runs within the terminal using the gem Curses to display characters on the board.
 
-In the game root of the directory enter:
+In the game root directory enter:
 
 `ruby game_of_life.rb`
 
