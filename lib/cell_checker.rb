@@ -1,73 +1,68 @@
 class CellChecker
 
   def create_frame(grid)
+    @grid = grid
     @new_frame = Marshal.load(Marshal.dump(grid))
+    @width = @grid.count - 1
+    @height = @grid[0].count - 1
+    cycle_through
+    return @new_frame
+  end
 
-    @x_position = 0
-    @y_position = 0
+  def cycle_through
     @neighbours = 0
-
-    @width = @new_frame.count - 1
-    @height = @new_frame[0].count - 1
-
-    while @x_position <= @width do
-
+    @x_position = 0
+    for x in 0..@width
       @y_position = 0
-      x_check = @x_position
-
-      while @y_position <= @height do
-        y_check = @y_position
-
-        rel_num_one = - 1
-        rel_num_two = - 1
-
-        num = 0
-
-        while rel_num_one < 2
-          rel_num_two = - 1
-          while rel_num_two < 2
-
-            if (@x_position + rel_num_one) < 0
-              x_check = @width
-            elsif (@x_position + rel_num_one) > @width
-              x_check = 0
-            else
-              x_check = (@x_position + rel_num_one)
-            end
-
-            if (@y_position + rel_num_two) < 0
-              y_check = @height
-            elsif (@y_position + rel_num_two) > @height
-              y_check = 0
-            else
-              y_check = (@y_position + rel_num_two)
-            end
-
-            unless (@x_position == (x_check)) && (@y_position == (y_check))
-              @neighbours += 1 if grid[x_check][y_check] == "█"
-            end
-
-            rel_num_two += 1
+      for y in 0..@height
+        relative_num_x = -1
+        relative_num_y = -1
+        while relative_num_x < 2
+          relative_num_y = -1
+          while relative_num_y < 2
+            cycle_check(cycle_x(relative_num_x), cycle_y(relative_num_y))
+            relative_num_y += 1
           end
-          rel_num_one += 1
+          relative_num_x += 1
         end
-
-        if @neighbours < 2 || @neighbours > 3
-          @new_frame[@x_position][@y_position] = " "
-        else
-          @new_frame[@x_position][@y_position] = "█"
-        end
-
-        grid_position = grid[@x_position][@y_position]
-
-        (@new_frame[@x_position][@y_position] = grid_position) if @neighbours == 2
-
+        @new_frame[@x_position][@y_position] = change_cell
+        @grid_position = @grid[@x_position][@y_position]
+        (@new_frame[@x_position][@y_position] = @grid_position) if @neighbours == 2
         @neighbours = 0
         @y_position += 1
       end
       @x_position += 1
     end
-    return @new_frame
+  end
+
+  def cycle_x(relative_num_x)
+    if (@x_position + relative_num_x) < 0
+      @width
+    elsif (@x_position + relative_num_x) > @width
+      0
+    else
+      (@x_position + relative_num_x)
+    end
+  end
+
+  def cycle_y(relative_num_y)
+    if (@y_position + relative_num_y) < 0
+      @height
+    elsif (@y_position + relative_num_y) > @height
+      0
+    else
+      (@y_position + relative_num_y)
+    end
+  end
+
+  def cycle_check(x_check, y_check)
+    unless (@x_position == (x_check)) && (@y_position == (y_check))
+      @neighbours += 1 if @grid[x_check][y_check] == "█"
+    end
+  end
+
+  def change_cell()
+    (@neighbours < 2 || @neighbours > 3) ? " " : "█"
   end
 
 end
