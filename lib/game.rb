@@ -18,13 +18,20 @@ class Game
 
     while true
       @display.frame(board_one, width, height)
-      board_two = @cell_checker.create_frame(board_one)
+      @cell_checker.create_frame(board_one)
+      board_two = @cell_checker.cycle_through
       board_one = board_two
       sleep(0.05)
-      char = STDIN.read_nonblock(1) rescue nil
-      break if char == " "
+      break if break_game?
     end
     "game over"
+  end
+
+  private
+
+  def break_game?
+    char = STDIN.read_nonblock(1) rescue nil
+    char == " "
   end
 
 end

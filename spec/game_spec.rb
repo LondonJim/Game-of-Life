@@ -7,7 +7,8 @@ describe "Game" do
     @cell_checker = double("CellChecker")
     @display = double("Display")
     allow(@board).to receive(:create_grid).and_return([[0,0,0], [0,0,0], [0,0,0]])
-    allow(@cell_checker).to receive(:create_frame).and_return(@board.create_grid)
+    allow(@cell_checker).to receive(:create_frame)
+    allow(@cell_checker).to receive(:cycle_through).and_return(@board.create_grid)
     allow(@display).to receive(:frame)
     @game = Game.new(@board, @cell_checker, @display)
   end

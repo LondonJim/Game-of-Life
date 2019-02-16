@@ -28,7 +28,7 @@ Installation of gems in the game root directory:
 
 
 ### How to run
-Currently the this Game of Life runs within the terminal using the gem Curses to display characters on the board.
+Currently the this Game of Life runs within the terminal using the gem Curses to display characters on the board, but thinking about it I probably could just have outputted the 2D arrays and cleared the terminal in-between frame changes.
 
 In the game root directory enter:
 

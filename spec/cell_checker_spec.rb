@@ -2,6 +2,7 @@ require "cell_checker"
 
 describe "CellChecker" do
 
+
   before(:each) do
     @test_frame_one = [[" "," "," "," "," "],
                        [" "," "," "," "," "],
@@ -25,19 +26,21 @@ describe "CellChecker" do
   describe "#create_frame" do
 
     it "can change a 1 to a 0 if less than two 1's surround it" do
-      expect(@cell_checker.create_frame(@test_frame_one)).to eq([[" "," "," "," "," "],
-                                                                 [" "," "," "," "," "],
-                                                                 [" "," "," "," "," "],
-                                                                 [" "," "," "," "," "],
-                                                                 [" "," "," "," "," "]])
+      @cell_checker.create_frame(@test_frame_one)
+      expect(@cell_checker.cycle_through).to eq([[" "," "," "," "," "],
+                                                 [" "," "," "," "," "],
+                                                 [" "," "," "," "," "],
+                                                 [" "," "," "," "," "],
+                                                 [" "," "," "," "," "]])
     end
 
     it "can change a 0 to a 1 if exactly three 1's surround it" do
-      expect(@cell_checker.create_frame(@test_frame_two)).to eq([[" "," "," "," "," "],
-                                                                 [" ","█","█","█"," "],
-                                                                 [" ","█"," ","█"," "],
-                                                                 [" ","█","█","█"," "],
-                                                                 [" "," "," "," "," "]])
+      @cell_checker.create_frame(@test_frame_two)
+      expect(@cell_checker.cycle_through).to eq([[" "," "," "," "," "],
+                                                 [" ","█","█","█"," "],
+                                                 [" ","█"," ","█"," "],
+                                                 [" ","█","█","█"," "],
+                                                 [" "," "," "," "," "]])
     end
   end
 end

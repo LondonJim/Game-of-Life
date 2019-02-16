@@ -5,8 +5,6 @@ class CellChecker
     @new_frame = Marshal.load(Marshal.dump(grid))
     @width = @grid.count - 1
     @height = @grid[0].count - 1
-    cycle_through
-    return @new_frame
   end
 
   def cycle_through
@@ -33,7 +31,10 @@ class CellChecker
       end
       @x_position += 1
     end
+    @new_frame
   end
+
+  private
 
   def cycle_x(relative_num_x)
     if (@x_position + relative_num_x) < 0
@@ -61,7 +62,7 @@ class CellChecker
     end
   end
 
-  def change_cell()
+  def change_cell
     (@neighbours < 2 || @neighbours > 3) ? " " : "█"
   end
 
