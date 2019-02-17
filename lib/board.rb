@@ -5,20 +5,15 @@ class Board
   end
 
   def create_grid(width = 5, height = 5)
-    column = 1
-    row = 1
     game_row = []
 
-    while column <= width do
-      while row <= height do
+    width.times {
+      height.times {
         game_row.push(random_binary)
-        row += 1
-      end
+      }
       @current_game_board.push(game_row)
-      column += 1
-      row = 1
       game_row = []
-    end
+    }
     @current_game_board
   end
 
